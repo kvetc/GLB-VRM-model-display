@@ -38,40 +38,63 @@
         
         .container {
 			position: fixed;
+			display: flex;
+			align-items: center;
 			left: 20px;
 			top: 50%;
 			transform: translateY(-50%);
-			width: 30%;
-			min-width: 300px;
-            max-width: 350px;
+			width: 35%;
+			min-width: 350px;
+            max-width: 400px;
 			max-height: 80%;
+			height: 80%;
             margin: 0 auto;
-            padding: 20px;
 			z-index: 101;
-			overflow-y: auto;
-			background: rgba(38, 38, 40, 0.9);
-            backdrop-filter: blur(20px);
-            border-radius: 10px;
-			border: 1px solid #404040;
+			gap: 10px;
+			background: none;
+			overflow: visible;
 			transition: all 0.2s ease, left 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
         }
 		.container::-webkit-scrollbar { width: 0px; height: 0px; }
 
+		.container-main {
+			width: 100%;
+			min-width: 300px;
+            max-width: 350px;
+    		height: 100%;
+			max-height: 100%;
+    		overflow-y: auto;
+    		background: rgba(38, 38, 40, 0.9);
+    		backdrop-filter: blur(20px);
+    		border-radius: 10px;
+    		border: 1px solid #404040;
+    		pointer-events: auto;
+			padding: 20px;
+		}
+
+		.container-main::-webkit-scrollbar { width: 0px; height: 0px; }
+
 		.container.close {
-			left: -400px;
+			left: -410px;
 		}
 
 		/* 关闭边栏 */
 		.container-close {
-			position: absolute;
+			position: relative;
+			display: flex;
 			overflow: hidden;
-			right: 10px;
-			top: 10px;
-			transform: translateY(0px);
-		    margin-left: auto;
-		    cursor: pointer;
-		    color: #f0f0f0;
+			height: 48px;
+			width: 26px;
+			justify-content: center;
+			align-items: center;
+    		cursor: pointer;
+    		color: #f0f0f0;
+			background: rgba(38, 38, 40, 0.7);
+    		backdrop-filter: blur(10px);
+    		border-radius: 15px;
+    		border: 1px solid #404040;
 			-webkit-tap-highlight-color: transparent;
+			z-index: 102;
 			transition: all 0.2s ease;
 		}
 		/* 打开边栏 */
@@ -89,10 +112,10 @@
     		margin-left: auto;
     		cursor: pointer;
     		color: #f0f0f0;
-			background: rgba(20, 20, 20, 0.1);
-			border: 1px solid rgba(64, 64, 64, 0.5);
-    		backdrop-filter: blur(5px);
+			background: rgba(38, 38, 40, 0.7);
+    		backdrop-filter: blur(10px);
     		border-radius: 15px;
+    		border: 1px solid #404040;
 			-webkit-tap-highlight-color: transparent;
 			z-index: 100;
 			transition: all 0.2s ease;
@@ -293,7 +316,6 @@
             border-top: 5px solid #bac3ff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            //margin-bottom: 20px;
         }
         
         @keyframes spin {
@@ -326,20 +348,6 @@
         .hidden {
             display: none;
         }
-        
-        /*@media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .model-viewer, .controls-panel {
-                min-width: 100%;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-        }*/
     </style>
 </head>
 <body>
@@ -354,11 +362,8 @@
 		<div class="container-open" id="containerOpenBtn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
         </div>
-    <div class="container" id="container">  
-		<!-- 关闭边栏按钮 -->
-		<div class="container-close" id="containerCloseBtn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180, 0, 0)"><polyline points="9 5 16 12 9 19"/></svg>
-        </div>     
+    <div class="container" id="container">
+		<div class="container-main">   
         <div class="main-content">
           <div class="controls-panel">
                 <h2 class="panel-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"><path d="M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/></svg> 模型控制面板</h2>
@@ -401,7 +406,7 @@
                             <span>缩放比例</span>
                             <span id="scale-value">1.0</span>
                         </div>
-                        <input type="range" id="scale-slider" min="0.1" max="2" step="0.1" value="1.0">
+                        <input type="range" id="scale-slider" min="0.1" max="3" step="0.1" value="1.0">
                     </div>
                 </div>
                 
@@ -430,6 +435,11 @@
             <p>©Aphasia ©xwbluemax</p>
 			<p>开源地址：<a style="color: #a0a0c0;" href="https://github.com/kvetc/GLB-VRM-model-display" target="_blank">Github</a></p>
         </footer>
+		</div>
+		<!-- 关闭边栏按钮 -->
+		<div class="container-close" id="containerCloseBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180, 0, 0)"><polyline points="9 5 16 12 9 19"/></svg>
+        </div> 
     </div>
 
     <!-- Three.js -->
