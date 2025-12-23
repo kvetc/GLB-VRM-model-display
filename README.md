@@ -5,4 +5,4 @@
 An online GLB/VRM model loader  
   
 在线体验 / Online experience:  
-https://vnut.top/
+https://vnut.top/glb
