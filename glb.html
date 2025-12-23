@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GLB/VRM 模型展示</title>
+	<link rel="icon" href="data:image/png;base64,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">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+		html, body {
+            width: 100%; height: 100%; overflow: hidden;
+			max-width: 100vw; max-height: 100vh;
+			margin: 0;
+    		padding: 0;
+    		position: fixed;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+            font-family: 'Segoe UI', sans-serif;
+			color: #f0f0f0;
+			background: #121212;
+            transition: background 0.3s;
+			overflow: hidden;
+        }
+
+		/* 滚动条 */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(160, 160, 160, 0.25); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(160, 160, 160, 0.4); }
+        
+        .container {
+			position: fixed;
+			left: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 30%;
+			min-width: 300px;
+            max-width: 350px;
+			max-height: 80%;
+            margin: 0 auto;
+            padding: 20px;
+			z-index: 101;
+			overflow-y: auto;
+			background: rgba(38, 38, 40, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 10px;
+			border: 1px solid #404040;
+			transition: all 0.2s ease, left 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+		.container::-webkit-scrollbar { width: 0px; height: 0px; }
+
+		.container.close {
+			left: -400px;
+		}
+
+		/* 关闭边栏 */
+		.container-close {
+			position: absolute;
+			overflow: hidden;
+			right: 10px;
+			top: 10px;
+			transform: translateY(0px);
+		    margin-left: auto;
+		    cursor: pointer;
+		    color: #f0f0f0;
+			-webkit-tap-highlight-color: transparent;
+			transition: all 0.2s ease;
+		}
+		/* 打开边栏 */
+		.container-open {
+			position: fixed;
+			display: flex;
+			overflow: hidden;
+			left: 22px;
+			top: 50%;
+			height: 48px;
+			width: 26px;
+			justify-content: center;
+			align-items: center;
+			transform: translateY(-50%);
+    		margin-left: auto;
+    		cursor: pointer;
+    		color: #f0f0f0;
+			background: rgba(20, 20, 20, 0.1);
+			border: 1px solid rgba(64, 64, 64, 0.5);
+    		backdrop-filter: blur(5px);
+    		border-radius: 15px;
+			-webkit-tap-highlight-color: transparent;
+			z-index: 100;
+			transition: all 0.2s ease;
+		}
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00dbde, #fc00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0c0;
+            margin-bottom: 30px;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .model-viewer {
+            flex: 1;
+			width: 100%;
+			height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        #model-container {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+        
+        .controls-panel {
+            flex: 1;
+        }
+        
+        .panel-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #bac3ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .panel-title svg {
+            width: 22px;
+			height: 22px;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        .control-title {
+            font-size: 1.0rem;
+            margin-bottom: 12px;
+			color: #bac3ff;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        button {
+            padding: 12px 18px 12px 16px;
+            background: none;
+            border: none;
+            border-radius: 25px;
+            color: #bac3ff;
+			border: 1px solid #888888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+		button svg {
+            width: 15px;
+			height: 15px;
+        }
+        
+        button:hover {
+            transform: scale(1.02);
+			border-radius: 12px;
+        }
+        
+        button:active {
+            transform: scale(0.96);
+			border-radius: 12px;
+        }
+
+        button.first {
+            background: #bac3ff;
+			color: #07208a;
+        }
+        
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+			font-size: 0.9rem;
+        }
+        
+        .slider-label span:last-child {
+            color: #bac3ff;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 12px;
+            background: #bac3ff;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            padding: 0; margin: 0;
+
+            transition: height 0.1s;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 4px; height: 36px;
+            border-radius: 2px;
+            background: #bac3ff;
+            cursor: pointer;
+            box-shadow: 0 0 0 6px #262628;
+            transition: transform 0.1s, border 0.2s;
+        }
+        
+        .model-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .info-title {
+            color: #f0f0f0;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .info-text {
+            color: #a0a0c0;
+            line-height: 1.6;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 180px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+			gap: 10px;
+            z-index: 99;
+			background: rgba(38, 38, 40, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 10px;
+			border: 1px solid #404040;
+            transition: opacity 0.5s;
+        }
+        
+        .spinner {
+            width: 25px;
+            height: 25px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #bac3ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            //margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #a0a0c0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        
+        .instructions {
+            margin-top: 30px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+            color: #a0a0c0;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /*@media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .model-viewer, .controls-panel {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }*/
+    </style>
+</head>
+<body>
+	<div class="model-viewer">
+                <div id="model-container"></div>
+                <div id="loading-overlay" class="loading-overlay">
+                    <div class="spinner"></div>
+                    <p>正在加载模型...</p>
+                </div>
+            </div>
+	<!-- 打开边栏按钮 -->
+		<div class="container-open" id="containerOpenBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 5 16 12 9 19"/></svg>
+        </div>
+    <div class="container" id="container">  
+		<!-- 关闭边栏按钮 -->
+		<div class="container-close" id="containerCloseBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180, 0, 0)"><polyline points="9 5 16 12 9 19"/></svg>
+        </div>     
+        <div class="main-content">
+          <div class="controls-panel">
+                <h2 class="panel-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"><path d="M10 3.75a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM17.25 4.5a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM5 3.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5a.75.75 0 0 1 .75.75ZM4.25 17a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM17.25 17a.75.75 0 0 0 0-1.5h-5.5a.75.75 0 0 0 0 1.5h5.5ZM9 10a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1 0-1.5h5.5A.75.75 0 0 1 9 10ZM17.25 10.75a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 0 0 1.5h1.5ZM14 10a2 2 0 1 0-4 0 2 2 0 0 0 4 0ZM10 16.25a2 2 0 1 0-4 0 2 2 0 0 0 4 0Z"/></svg> 模型控制面板</h2>
+		
+                
+                <div class="control-group">
+                    <h3 class="control-title">模型操作</h3>
+                    <div class="button-group">
+                        <button id="load-model-btn" class="first">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon"><path fill-rule="evenodd" d="M4.5 2A1.5 1.5 0 0 0 3 3.5v13A1.5 1.5 0 0 0 4.5 18h11a1.5 1.5 0 0 0 1.5-1.5V7.621a1.5 1.5 0 0 0-.44-1.06l-4.12-4.122A1.5 1.5 0 0 0 11.378 2H4.5Zm4.75 11.25a.75.75 0 0 0 1.5 0v-2.546l.943 1.048a.75.75 0 1 0 1.114-1.004l-2.25-2.5a.75.75 0 0 0-1.114 0l-2.25 2.5a.75.75 0 1 0 1.114 1.004l.943-1.048v2.546Z" clip-rule="evenodd"/></svg> 加载GLB模型
+                        </button>
+                        <button id="reset-view-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"/></svg> 重置视角
+                        </button>
+                        <button id="animate-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor" id="mp-play-icon"><path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="currentColor"></path></svg> 播放动画
+                        </button>
+
+						<button id="wireframe-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" vertical-align="middle"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm8 0H5v6h6zm2 0v6h6V5zm-2 8H5v6h6zm2 6v-6h6v6z"/></g></svg> 线框模式
+                        </button>
+                        <button id="change-color-btn" style="display: none;">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 8.5H15.51M10.5 7.5H10.51M7.5 11.5H7.51M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 13.6569 19.6569 15 18 15H17.4C17.0284 15 16.8426 15 16.6871 15.0246C15.8313 15.1602 15.1602 15.8313 15.0246 16.6871C15 16.8426 15 17.0284 15 17.4V18C15 19.6569 13.6569 21 12 21ZM16 8.5C16 8.77614 15.7761 9 15.5 9C15.2239 9 15 8.77614 15 8.5C15 8.22386 15.2239 8 15.5 8C15.7761 8 16 8.22386 16 8.5ZM11 7.5C11 7.77614 10.7761 8 10.5 8C10.2239 8 10 7.77614 10 7.5C10 7.22386 10.2239 7 10.5 7C10.7761 7 11 7.22386 11 7.5ZM8 11.5C8 11.7761 7.77614 12 7.5 12C7.22386 12 7 11.7761 7 11.5C7 11.2239 7.22386 11 7.5 11C7.77614 11 8 11.2239 8 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 随机颜色
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3 class="control-title">模型控制</h3>
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>旋转速度</span>
+                            <span id="rotation-speed-value">0.5</span>
+                        </div>
+                        <input type="range" id="rotation-speed" min="0" max="1" step="0.1" value="0.5">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>缩放比例</span>
+                            <span id="scale-value">1.0</span>
+                        </div>
+                        <input type="range" id="scale-slider" min="0.1" max="2" step="0.1" value="1.0">
+                    </div>
+                </div>
+                
+                <div class="model-info">
+                    <h3 class="info-title">GLB 模型信息</h3>
+                    <p class="info-text" id="model-info-text">
+                        暂无模型加载。请点击"加载 GLB 模型"按钮选择一个 GLB 格式的 3D 人物模型文件。
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3 class="control-title">使用说明</h3>
+            <ul>
+                <li><strong>鼠标左键拖动</strong>：旋转模型和场景</li>
+                <li><strong>鼠标右键拖动</strong>：平移场景</li>
+                <li><strong>鼠标滚轮</strong>：缩放视图</li>
+				<li>GLB 模型和 VRM 模型是一个东西，如果你有 VRM 模型，可以直接把文件后缀名改为.glb，即可导入</li>
+                <li>你可以使用自己的 GLB 模型文件，或从在线资源下载 GLB 格式的 3D 人物模型</li>
+                <li>如果模型包含动画，点击"播放动画"按钮可以播放模型动画</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>©</p>
+        </footer>
+    </div>
+
+    <!-- Three.js -->
+    <script src="library/three.min.js"></script>
+    <!-- GLTF/GLB加载器 -->
+    <script src="library/GLTFLoader.min.js"></script>
+    <!-- 轨道控制器 -->
+    <script src="library/OrbitControls.min.js"></script>
+    
+    <script>
+        // 主Three.js应用程序
+        class ModelViewer {
+            constructor() {
+                // 初始化Three.js核心组件
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                this.controls = null;
+                this.model = null;
+                this.mixer = null;
+                this.animations = [];
+                this.currentAnimation = null;
+                
+                // 模型旋转控制
+                this.autoRotate = true;
+                this.rotationSpeed = 0.5;
+                
+                // UI元素引用
+                this.modelContainer = document.getElementById('model-container');
+                this.loadingOverlay = document.getElementById('loading-overlay');
+                this.modelInfoText = document.getElementById('model-info-text');
+                
+                // 初始化UI事件监听
+                this.initEventListeners();
+                
+                // 初始化Three.js场景
+                this.initThreeJS();
+                
+                // 开始渲染循环
+                this.animate();
+                
+                // 默认加载一个示例模型
+                this.loadDefaultModel();
+            }
+            
+            // 初始化Three.js场景
+            initThreeJS() {
+                // 创建场景
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x131315);
+                this.scene.fog = new THREE.Fog(0x131315, 10, 25);
+                
+                // 创建相机
+                const width = this.modelContainer.clientWidth;
+                const height = this.modelContainer.clientHeight;
+                
+                this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+                this.camera.position.set(0, 1.5, 5);
+                
+                // 创建渲染器
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                this.renderer.setSize(width, height);
+                this.renderer.setPixelRatio(window.devicePixelRatio);
+                this.renderer.shadowMap.enabled = true;
+                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                
+                // 将渲染器的canvas添加到DOM
+                this.modelContainer.appendChild(this.renderer.domElement);
+                
+                // 添加轨道控制器
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+                this.controls.dampingFactor = 0.05;
+                this.controls.minDistance = 1;
+                this.controls.maxDistance = 20;
+                this.controls.maxPolarAngle = Math.PI;
+                
+                // 添加光源
+                this.addLights();
+                
+                // 添加地面
+                this.addGround();
+                
+                // 处理窗口大小变化
+                window.addEventListener('resize', () => this.onWindowResize());
+            }
+            
+            // 添加光源
+            addLights() {
+                // 环境光
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+                this.scene.add(ambientLight);
+                
+                // 定向光
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                directionalLight.position.set(5, 10, 7);
+                directionalLight.castShadow = true;
+                directionalLight.shadow.camera.left = -10;
+                directionalLight.shadow.camera.right = 10;
+                directionalLight.shadow.camera.top = 10;
+                directionalLight.shadow.camera.bottom = -10;
+                this.scene.add(directionalLight);
+                
+                // 辅助光
+                const pointLight = new THREE.PointLight(0xffffff, 0.5, 20);
+                pointLight.position.set(-5, 3, -5);
+                this.scene.add(pointLight);
+            }
+            
+            // 添加地面
+            addGround() {
+                const groundGeometry = new THREE.PlaneGeometry(20, 20);
+                const groundMaterial = new THREE.MeshStandardMaterial({ 
+                    color: 0x1f1f21,
+                    roughness: 0.8,
+                    metalness: 0.2
+                });
+                const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+                ground.rotation.x = -Math.PI / 2;
+                ground.receiveShadow = true;
+                this.scene.add(ground);
+                
+                // 添加网格辅助线
+                const gridHelper = new THREE.GridHelper(20, 20, 0x47474c, 0x323235);
+                this.scene.add(gridHelper);
+            }
+            
+            // 加载默认模型（占位模型）
+            loadDefaultModel() {
+                // 创建占位模型
+                this.createPlaceholderModel();
+            }
+            
+            // 创建占位模型
+            createPlaceholderModel() {
+                // 清除现有模型
+                if (this.model) {
+                    this.scene.remove(this.model);
+                }
+                
+                // 创建组来包含模型
+                this.model = new THREE.Group();
+                
+                // 创建头部
+                const headGeometry = new THREE.SphereGeometry(0.2, 16, 16);
+                const headMaterial = new THREE.MeshStandardMaterial({ color: 0xf0a0a0 });
+                const head = new THREE.Mesh(headGeometry, headMaterial);
+                head.position.y = 1.5;
+                head.castShadow = true;
+                this.model.add(head);
+                
+                // 创建身体
+                const bodyGeometry = new THREE.CylinderGeometry(0.15, 0.2, 0.8, 16);
+                const bodyMaterial = new THREE.MeshStandardMaterial({ color: 0x4a6fa5 });
+                const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+                body.position.y = 0.8;
+                body.castShadow = true;
+                this.model.add(body);
+                
+                // 创建手臂
+                const armGeometry = new THREE.CylinderGeometry(0.05, 0.05, 0.6, 8);
+                const armMaterial = new THREE.MeshStandardMaterial({ color: 0x4a6fa5 });
+                
+                // 左臂
+                const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+                leftArm.position.set(-0.3, 0.9, 0);
+                leftArm.rotation.z = 0.3;
+                leftArm.castShadow = true;
+                this.model.add(leftArm);
+                
+                // 右臂
+                const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+                rightArm.position.set(0.3, 0.9, 0);
+                rightArm.rotation.z = -0.3;
+                rightArm.castShadow = true;
+                this.model.add(rightArm);
+                
+                // 创建腿
+                const legGeometry = new THREE.CylinderGeometry(0.07, 0.07, 0.7, 8);
+                const legMaterial = new THREE.MeshStandardMaterial({ color: 0x2a3f5f });
+                
+                // 左腿
+                const leftLeg = new THREE.Mesh(legGeometry, legMaterial);
+                leftLeg.position.set(-0.1, 0.35, 0);
+                leftLeg.castShadow = true;
+                this.model.add(leftLeg);
+                
+                // 右腿
+                const rightLeg = new THREE.Mesh(legGeometry, legMaterial);
+                rightLeg.position.set(0.1, 0.35, 0);
+                rightLeg.castShadow = true;
+                this.model.add(rightLeg);
+                
+                // 添加到场景
+                this.scene.add(this.model);
+                
+                // 更新模型信息
+                this.modelInfoText.textContent = "暂无模型加载。请点击'加载 GLB 模型'按钮选择一个 GLB 格式的 3D 人物模型文件。当前显示：默认占位人物模型";
+            }
+            
+            // 加载GLB模型
+            loadGLBModel(file) {
+                // 显示加载指示器
+                this.loadingOverlay.classList.remove('hidden');
+                
+                // 清除现有模型
+                if (this.model) {
+                    this.scene.remove(this.model);
+                    this.model = null;
+                }
+                
+                // 创建GLTF加载器
+                const loader = new THREE.GLTFLoader();
+                
+                // 读取文件
+                const fileReader = new FileReader();
+                
+                fileReader.onload = (event) => {
+                    const contents = event.target.result;
+                    
+                    // 解析GLB数据
+                    loader.parse(contents, '', (gltf) => {
+                        this.model = gltf.scene;
+                        
+                        // 调整模型位置和缩放
+                        this.model.position.set(0, 0, 0);
+                        this.model.scale.set(1, 1, 1);
+                        
+                        // 让模型能够投射阴影
+                        this.model.traverse((node) => {
+                            if (node.isMesh) {
+                                node.castShadow = true;
+                                node.receiveShadow = true;
+                            }
+                        });
+                        
+                        // 添加到场景
+                        this.scene.add(this.model);
+                        
+                        // 设置动画混合器（如果模型有动画）
+                        if (gltf.animations && gltf.animations.length > 0) {
+                            this.mixer = new THREE.AnimationMixer(this.model);
+                            this.animations = gltf.animations;
+                            
+                            // 播放第一个动画
+                            this.currentAnimation = this.mixer.clipAction(this.animations[0]);
+                            this.currentAnimation.play();
+                        }
+                        
+                        // 调整相机视角以适合模型
+                        this.fitCameraToModel();
+                        
+                        // 隐藏加载指示器
+                        setTimeout(() => {
+                            this.loadingOverlay.classList.add('hidden');
+                        }, 500);
+                        
+                        // 更新模型信息
+                        this.modelInfoText.textContent = `模型加载成功。
+文件名称: ${file.name}
+文件大小: ${(file.size / 1024 / 1024).toFixed(2)} MB
+包含动画: ${gltf.animations ? gltf.animations.length : 0} 个`;
+                        
+                    }, (error) => {
+                        console.error('解析GLB文件时出错:', error);
+                        this.loadingOverlay.classList.add('hidden');
+                        alert('无法解析GLB文件，请确保文件格式正确');
+                        this.createPlaceholderModel();
+                    });
+                };
+                
+                fileReader.onerror = (error) => {
+                    console.error('读取文件时出错:', error);
+                    this.loadingOverlay.classList.add('hidden');
+                    alert('读取文件时出错');
+                    this.createPlaceholderModel();
+                };
+                
+                // 读取文件为ArrayBuffer
+                fileReader.readAsArrayBuffer(file);
+            }
+            
+            // 调整相机视角以适合模型
+            fitCameraToModel() {
+                if (!this.model) return;
+                
+                const boundingBox = new THREE.Box3().setFromObject(this.model);
+                const center = boundingBox.getCenter(new THREE.Vector3());
+                const size = boundingBox.getSize(new THREE.Vector3());
+                
+                // 计算相机距离
+                const maxDim = Math.max(size.x, size.y, size.z);
+                const fov = this.camera.fov * (Math.PI / 180);
+                let cameraZ = Math.abs(maxDim / Math.sin(fov / 2));
+                
+                // 增加一些余量
+                cameraZ *= 1.5;
+                
+                // 更新相机位置
+                this.camera.position.set(center.x, center.y + size.y * 0.5, cameraZ);
+                this.camera.lookAt(center);
+                
+                // 更新控制器目标
+                this.controls.target.copy(center);
+                this.controls.update();
+            }
+            
+            // 播放/停止动画
+            toggleAnimation() {
+                if (!this.mixer || this.animations.length === 0) {
+                    alert('此模型不包含动画或动画无法播放');
+                    return;
+                }
+                
+                const animateBtn = document.getElementById('animate-btn');
+                
+                if (this.currentAnimation.isRunning()) {
+                    this.currentAnimation.stop();
+                    animateBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" id="mp-play-icon"><path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="currentColor"></path></svg> 播放动画';
+                } else {
+                    this.currentAnimation.play();
+                    animateBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" id="mp-play-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 5L20 19C20 20.6569 18.6569 22 17 22L16 22C14.3431 22 13 20.6569 13 19L13 5C13 3.34314 14.3431 2 16 2L17 2C18.6569 2 20 3.34315 20 5Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M8 2C9.65685 2 11 3.34315 11 5L11 19C11 20.6569 9.65685 22 8 22L7 22C5.34315 22 4 20.6569 4 19L4 5C4 3.34314 5.34315 2 7 2L8 2Z" fill="currentColor"></path></svg> 停止动画';
+                }
+            }
+            
+            // 切换线框模式
+            toggleWireframe() {
+                if (!this.model) return;
+                
+                this.model.traverse((node) => {
+                    if (node.isMesh) {
+                        node.material.wireframe = !node.material.wireframe;
+                    }
+                });
+                
+                const wireframeBtn = document.getElementById('wireframe-btn');
+                if (this.model.children[0]?.material?.wireframe) {
+                    wireframeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" vertical-align="middle"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h6v8H3zm8 8H3v6a2 2 0 0 0 2 2h6zm2 8h6a2 2 0 0 0 2-2v-6h-8zm0-10V3h6a2 2 0 0 1 2 2v6z"/></g></svg> 实体模式';
+                } else {
+                    wireframeBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" vertical-align="middle"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm8 0H5v6h6zm2 0v6h6V5zm-2 8H5v6h6zm2 6v-6h6v6z"/></g></svg> 线框模式';
+                }
+            }
+            
+            // 随机改变模型颜色
+            changeModelColor() {
+                if (!this.model) return;
+                
+                const colors = [
+                    0xff6b6b, 0x4ecdc4, 0xffd166, 0x06d6a0, 
+                    0x118ab2, 0xef476f, 0x7209b7, 0x3a86ff
+                ];
+                
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                this.model.traverse((node) => {
+                    if (node.isMesh && node.material) {
+                        // 保存原始材质属性
+                        const originalMaterial = node.material;
+                        
+                        // 创建新材质，保持其他属性不变
+                        node.material = new THREE.MeshStandardMaterial({
+                            color: randomColor,
+                            roughness: originalMaterial.roughness,
+                            metalness: originalMaterial.metalness,
+                            wireframe: originalMaterial.wireframe
+                        });
+                    }
+                });
+            }
+            
+            // 重置视角
+            resetView() {
+                this.camera.position.set(0, 1.5, 5);
+                this.controls.target.set(0, 0.8, 0);
+                this.controls.update();
+            }
+            
+            // 处理窗口大小变化
+            onWindowResize() {
+                const width = this.modelContainer.clientWidth;
+                const height = this.modelContainer.clientHeight;
+                
+                this.camera.aspect = width / height;
+                this.camera.updateProjectionMatrix();
+                
+                this.renderer.setSize(width, height);
+            }
+            
+            // 初始化UI事件监听
+            initEventListeners() {
+                // 加载模型按钮
+                document.getElementById('load-model-btn').addEventListener('click', () => {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = '.glb,.gltf';
+                    input.onchange = (e) => {
+                        const file = e.target.files[0];
+                        if (file) {
+                            this.loadGLBModel(file);
+                        }
+                    };
+                    input.click();
+                });
+                
+                // 重置视角按钮
+                document.getElementById('reset-view-btn').addEventListener('click', () => {
+                    this.resetView();
+                });
+                
+                // 动画播放按钮
+                document.getElementById('animate-btn').addEventListener('click', () => {
+                    this.toggleAnimation();
+                });
+                
+                // 线框模式按钮
+                document.getElementById('wireframe-btn').addEventListener('click', () => {
+                    this.toggleWireframe();
+                });
+                
+                // 随机颜色按钮
+                document.getElementById('change-color-btn').addEventListener('click', () => {
+                    this.changeModelColor();
+                });
+                
+                // 旋转速度滑块
+                const rotationSlider = document.getElementById('rotation-speed');
+                const rotationValue = document.getElementById('rotation-speed-value');
+                
+                rotationSlider.addEventListener('input', (e) => {
+                    this.rotationSpeed = parseFloat(e.target.value);
+                    rotationValue.textContent = this.rotationSpeed.toFixed(1);
+                });
+                
+                // 缩放滑块
+                const scaleSlider = document.getElementById('scale-slider');
+                const scaleValue = document.getElementById('scale-value');
+                
+                scaleSlider.addEventListener('input', (e) => {
+                    const scale = parseFloat(e.target.value);
+                    if (this.model) {
+                        this.model.scale.set(scale, scale, scale);
+                    }
+                    scaleValue.textContent = scale.toFixed(1);
+                });
+                
+                // 允许通过拖放加载文件
+                this.modelContainer.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    this.modelContainer.style.border = '2px dashed #4cc9f0';
+                });
+                
+                this.modelContainer.addEventListener('dragleave', () => {
+                    this.modelContainer.style.border = 'none';
+                });
+                
+                this.modelContainer.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    this.modelContainer.style.border = 'none';
+                    
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        const file = files[0];
+                        if (file.name.toLowerCase().endsWith('.glb') || file.name.toLowerCase().endsWith('.gltf')) {
+                            this.loadGLBModel(file);
+                        } else {
+                            alert('请选择GLB或GLTF格式的文件');
+                        }
+                    }
+                });
+            }
+            
+            // 渲染循环
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                // 更新动画混合器
+                if (this.mixer) {
+                    this.mixer.update(0.016); // 假设60fps
+                }
+                
+                // 自动旋转模型
+                if (this.model && this.autoRotate) {
+                    this.model.rotation.y += 0.01 * this.rotationSpeed;
+                }
+                
+                // 更新控制器
+                if (this.controls) {
+                    this.controls.update();
+                }
+                
+                // 渲染场景
+                if (this.renderer && this.scene && this.camera) {
+                    this.renderer.render(this.scene, this.camera);
+                }
+            }
+        }
+
+		const containerSidebar = document.getElementById('container');
+		const containerCloseBtn = document.getElementById('containerCloseBtn');
+		const containerOpenBtn = document.getElementById('containerOpenBtn');
+        
+        // 关闭边栏
+        containerCloseBtn.addEventListener('click', () => {
+            containerSidebar.classList.add('close');
+        });
+     
+        // 打开边栏
+		containerOpenBtn.addEventListener('click', () => {
+            containerSidebar.classList.remove('close');
+        });
+        
+        // 页面加载完成后初始化应用
+        window.addEventListener('DOMContentLoaded', () => {
+            const viewer = new ModelViewer();
+            
+            // 使viewer在全局可访问（用于调试）
+            window.viewer = viewer;
+        });
+    </script>
+</body>
+</html>
